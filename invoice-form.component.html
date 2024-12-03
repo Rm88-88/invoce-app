@@ -1,0 +1,25 @@
+   ```html
+   <form (ngSubmit)="onSubmit()">
+       <input [(ngModel)]="invoice.name" placeholder="שם" required />
+       <input [(ngModel)]="invoice.phone" placeholder="טלפון" required />
+       <input [(ngModel)]="invoice.businessNumber" placeholder="מס' עוסק פטור" required />
+       <input [(ngModel)]="invoice.invoiceNumber" placeholder="מס' קבלה/חשבונית" required />
+
+       <div *ngFor="let item of invoice.items; let i = index">
+           <input [(ngModel)]="item.description" placeholder="תיאור" required />
+           <input [(ngModel)]="item.quantity" type="number" placeholder="כמות" required (ngModelChange)="calculateSubtotal(i)" />
+           <input [(ngModel)]="item.price" type="number" placeholder="מחיר" required (ngModelChange)="calculateSubtotal(i)" />
+           <input [(ngModel)]="item.subtotal" placeholder="סך הכל" readonly />
+       </div>
+
+       <button (click)="addItem()">הוסף פריט</button>
+
+       <select [(ngModel)]="invoice.paymentMethod" required>
+           <option value="cash">מזומן</option>
+           <option value="bank_transfer">העברה בנקאית</option>
+           <option value="check">שיק</option>
+       </select>
+
+       <button type="submit">שמור קבלה</button>
+   </form>
+   ```
