@@ -1,5 +1,4 @@
-  ```go
-   package main
+  package main
 
    import (
        "encoding/json"
@@ -53,4 +52,3 @@
        http.HandleFunc("/invoices", createInvoice)
        http.ListenAndServe(":8080", nil)
    }
-   ```
